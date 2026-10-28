@@ -1,0 +1,38 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: coe-platform
+
+  datasource:
+    url: jdbc:mysql://localhost:3307/coe_platform?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+app:
+  enrollment:
+    allow-multiple-active-batches: false
+
+  scheduling:
+    enforce-lab-capacity: true
+    max-unavailability-days: 365
+
+  jwt:
+    secret: ${JWT_SECRET:change-this-to-a-long-random-string-minimum-32-characters}
+    expiration-minutes: 60
+
+  bootstrap:
+    admin-name: "Platform Admin"
+    admin-email: admin@coe.local
+    admin-password: ${BOOTSTRAP_ADMIN_PASSWORD:ChangeMe@123}
